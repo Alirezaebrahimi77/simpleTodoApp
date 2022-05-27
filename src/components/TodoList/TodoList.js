@@ -7,11 +7,11 @@ function TodoList({todos, deleteHandler, completeTask, editHandler}) {
 
   return (
     <div>
-      {todos?.map(task => (
+      {todos?.map((task, index) => (
         <SingleTask 
         key={task.id} 
         task={task}
-        backgroundColor={backgroundColors[Math.floor(Math.random() * backgroundColors.length)]}
+        backgroundColor={backgroundColors[index]}
         deleteHandler={deleteHandler}
         completeTask={completeTask}
         editHandler={editHandler}
