@@ -27,6 +27,7 @@
     border: 1px solid lightgray;
     outline: none;
     font-size: .9rem;
+    background-color: #fff;
 }
 @media only screen and (max-width: 720px){
     .container{
