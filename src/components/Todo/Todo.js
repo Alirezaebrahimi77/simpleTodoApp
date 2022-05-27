@@ -8,12 +8,14 @@ function Todo() {
   const [todos, setTodos] = useState([])
   const [todoText, setTodoText] = useState("")
   const [edit, setEdit] = useState({})
+  const [filtered, setFiltered] = useState([])
   
 
   const addTodoHandler = (e) => {
     e.preventDefault()
     const newArray = [...todos, {id: Math.floor(Math.random() * 100), task: todoText, completed: false}]
     setTodos(newArray)
+    setFiltered(newArray)
     saveToLocalStorage(newArray, "AliTodos")
     setTodoText("")
   }
@@ -21,6 +23,7 @@ function Todo() {
   const deleteHandler = (id) => {
     const filteredTodos = todos.filter(todo => todo.id !== id)
     setTodos(filteredTodos)
+    setFiltered(filteredTodos)
     saveToLocalStorage(filteredTodos, "AliTodos")
   }
 
@@ -36,6 +39,7 @@ function Todo() {
     updatedItem.task = edit.task;
     updatedTodos[index] = updatedItem
     setTodos(updatedTodos)
+    setFiltered(updatedTodos)
     setEdit({})
     saveToLocalStorage(updatedTodos, "AliTodos")
   }
@@ -52,12 +56,29 @@ function Todo() {
     
     updatedTodos[index] = updatedItem
     setTodos(updatedTodos)
+    setFiltered(updatedTodos)
     saveToLocalStorage(updatedTodos, "AliTodos")
+  }
+
+  const filterHandler = (value) => {
+    if(value !== "all"){
+      if(value === "completed"){
+        const filteredTodos = todos.filter(todo => todo.completed === true)
+        setFiltered(filteredTodos)
+
+      }else{
+        const filteredTodos = todos.filter(todo => todo.completed === false)
+        setFiltered(filteredTodos)
+      }
+    }else{
+      setFiltered(todos)
+    }
   }
 
   useEffect(() => {
       const todos = localStorage.getItem("AliTodos") ? JSON.parse(localStorage.getItem("AliTodos")) : []
       setTodos(todos)
+      setFiltered(todos)
   }, [])
 
   return (
@@ -65,11 +86,19 @@ function Todo() {
       <div className={styles.title}>
           <h1>What's the Plan for Today?</h1>
       </div>
-
       {Object.keys(edit).length === 0? (
         <>
           <Form todoText={todoText} setTodoText={setTodoText} submitHandler={addTodoHandler} buttonText={"Add Todo"}/>
-          <TodoList todos={todos} deleteHandler={deleteHandler} completeTask={completeTask} editHandler={editHandler}/>
+          {todos.length > 0 && (
+            <div className={styles.filterContainer}>
+              <select onChange={(e) => filterHandler(e.target.value)}>
+                <option value="all">All</option>  
+                <option value="completed">Completed</option>  
+                <option value="uncompleted">Uncompleted</option>  
+              </select> 
+            </div>
+          )}
+          <TodoList todos={filtered} deleteHandler={deleteHandler} completeTask={completeTask} editHandler={editHandler}/>
         </>
       ):(
           <Form todoText={edit} setTodoText={setEdit} submitHandler={editTaskHandler} buttonText={"Edit"}/>

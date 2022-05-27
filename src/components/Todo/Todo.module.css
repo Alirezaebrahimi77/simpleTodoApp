@@ -1,17 +1,32 @@
 .container{
     width: 500px;
-    height: 600px;
+    height: 100%;
     border-radius: 10px;
     border: 1px solid lightgray;
     box-shadow: 0 1px 4px rgba(0,0,0,0.16);
     padding: 25px 40px;
+    overflow: scroll;
+    display: grid;
+    grid-template-rows: auto auto auto 1fr;
+}
+.container::-webkit-scrollbar {
+    display: none;
 }
 
 .title{
     text-align: center;
     font-size: .7rem;
     color: #475569;
-
+}
+.filterContainer{
+    margin-bottom: 12px;
+}
+.filterContainer select{
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: 1px solid lightgray;
+    outline: none;
+    font-size: .9rem;
 }
 @media only screen and (max-width: 720px){
     .container{
