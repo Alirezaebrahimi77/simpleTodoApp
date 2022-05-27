@@ -13,6 +13,10 @@ function Todo() {
 
   const addTodoHandler = (e) => {
     e.preventDefault()
+    if(todoText === ""){
+      alert("Please type your todo")
+      return
+    }
     const newArray = [...todos, {id: Math.floor(Math.random() * 100), task: todoText, completed: false}]
     setTodos(newArray)
     setFiltered(newArray)
@@ -33,6 +37,10 @@ function Todo() {
 
   const editTaskHandler = (e) => {
     e.preventDefault()
+    if(edit.task === ""){
+      alert("Please type your todo")
+      return
+    }
     let updatedTodos = [...todos]
     let index = updatedTodos.findIndex(item => item.id === edit.id)
     let updatedItem = updatedTodos[index]
