@@ -1,0 +1,32 @@
+.taskContainer{
+    padding: 12px 14px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #86efac;
+    margin-bottom: 20px;
+}
+.taskTitle{
+    flex: 1;
+    font-size: .9rem;
+}
+.taskActions{
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 10px;
+}
+.edit:hover{
+    color: #3730a3;
+    cursor: pointer;
+
+}
+.trash:hover{
+    color: #9d174d;
+    cursor: pointer;
+}
+.completed{
+    opacity: .4;
+}
+.completed .taskTitle > p{
+    text-decoration: line-through;
+}
