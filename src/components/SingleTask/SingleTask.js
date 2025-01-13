@@ -34,9 +34,9 @@ const SingleTask = React.memo(function SingleTask({
     <div 
       className={containerClasses} 
       style={containerStyle}
-      onClick={handleComplete}
+  
     >
-      <div className={styles.taskTitle}>
+      <div className={styles.taskTitle} onClick={handleComplete}>
         <p >
           {task.task}
         </p>
