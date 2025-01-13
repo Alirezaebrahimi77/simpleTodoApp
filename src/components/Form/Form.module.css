@@ -1,4 +1,4 @@
-.formContainer{
+.formContainer {
     padding: 2px;
     position: relative;
     display: flex;
@@ -7,15 +7,16 @@
     border-radius: 10px;
     overflow: hidden;
 }
-.formContainer input{
+.formContainer input {
     padding: 10px 12px;
     outline: none;
     flex: 1;
     border: none;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    font-size: 14px;
 }
-.formContainer button{
+.formContainer button {
     border: none;
     background-color: #6366f1;
     color: #fff;
