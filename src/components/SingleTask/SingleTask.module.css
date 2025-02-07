@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     background-color: #86efac;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     cursor: pointer;
 }
 .taskTitle {
@@ -15,20 +15,18 @@
 .taskActions {
     display: grid;
     grid-template-columns: auto auto;
-    column-gap: 10px;
+    column-gap: 15px;
 }
-.edit:hover {
+.edit {
     color: #3730a3;
     cursor: pointer;
-
 }
-.trash:hover {
+
+.trash {
     color: #9d174d;
     cursor: pointer;
 }
-.completed {
-    opacity: .4;
-}
+
 .completed .taskTitle > p {
     text-decoration: line-through;
 }

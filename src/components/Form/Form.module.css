@@ -22,4 +22,5 @@
     color: #fff;
     padding: 6px 8px;
     cursor: pointer;
+    min-width: 75px;
 }
